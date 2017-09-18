@@ -1,0 +1,37 @@
+<h1 align="center">Signup for Alpha Blog </h1>
+
+<ul>
+<% if @user.errors.any? %>
+
+<h2> The following errors prevented the article from getting Created </h2>
+    <% @user.errors.full_messages.each do |msg| %>
+        <li>   <%= msg %> </li>
+        <% end %>
+<% end %>
+</ul>
+
+<%= form_for @user do |f| %>
+    <p> 
+        <%= f.label :username %> <br/>
+        <%= f.text_field :username, class: "form-control", placeholder: "Enter password", autofocus: true %>
+    </p>
+
+    <p> 
+        <%= f.label :email %> <br/>
+        <%= f.email_field :email, class: "form-control", placeholder: "Enter password" %>
+    </p>
+
+    <p> 
+        <%= f.label :password %> <br/>
+        <%= f.password_field :password, class: "form-control", placeholder: "Enter password" %>
+    </p>
+
+
+    <p>
+        <%= f.submit "Sign up"%>
+    </p>
+
+<% end %>
+
+<%= link_to "Back to Home", root_path %>
+

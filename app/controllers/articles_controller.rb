@@ -18,7 +18,11 @@ before_action :set_article, only: [:edit, :update, :show, :destroy]
 
     def create
         #render plain: params[:article].inspect
+
+        debugger 
         @article = Article.new(article_params)
+
+        @article.user = User.first 
 
         if @article.save
             flash[:notice] = "Article was successfully created"

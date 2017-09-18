@@ -21,7 +21,7 @@ before_action :set_article, only: [:edit, :update, :show, :destroy]
 
         @article = Article.new(article_params)
 
-        @article.user = User.first 
+        @article.user = User.last
 
         if @article.save
             flash[:notice] = "Article was successfully created"

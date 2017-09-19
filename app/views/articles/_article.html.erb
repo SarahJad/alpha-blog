@@ -18,7 +18,7 @@
         <td> Created at: <%= time_ago_in_words(article.created_at) %> ago,
         last updated: <%= time_ago_in_words(article.updated_at) %> ago </td> 	&nbsp;
 
-        <% if logged_in? && current_user == article.user %>
+        <% if logged_in? && (current_user == article.user || current_user.admin? )%>
         
             <td> <%= link_to "Edit", edit_article_path(article) %> </td> &nbsp;
                     

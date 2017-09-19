@@ -1,8 +1,14 @@
 <h1 align="center"> Listing All categories </h1>
 
-
+<% if current_user.admin? %>
+<%= link_to 'Create new Category', new_category_path, class: "btn-primary btn-lg if "%>
+<% end %>
 
 <div align="center">
+
+
+    
+
     <%= will_paginate %>
     <% @categories.each do |category| %>
         <ul class="listing">
@@ -14,4 +20,7 @@
         </ul>
     <% end %>
     
+
+    
 </div>
+

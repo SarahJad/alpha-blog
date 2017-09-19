@@ -8,19 +8,23 @@
 
     <% obj.each do |article| %>
     <tr> 
-        <td> <%= article.title %> </td>
-        <td> <%= article.description %> </td>
+        <td> <%= article.title %> </td>&nbsp;
+        <td> <%= article.description %> </td>&nbsp;
 
+        <td> <%= link_to "Show", article_path(article) %> </td>  	&nbsp;
 
-        <td> <%= link_to "Edit", edit_article_path(article) %> </td>
-        <td> <%= link_to "Show", article_path(article) %> </td>
-        <td> <%= link_to "Delete", article_path(article), method: :delete, data: {confirm: "Are you sure?"} %> </td>
-    
-        <td> Created by: <%= article.user.username if article.user %>   </td> 
+        
+        <td> Created by: <%= article.user.username if article.user %>   </td>  	&nbsp;
         <td> Created at: <%= time_ago_in_words(article.created_at) %> ago,
-        last updated: <%= time_ago_in_words(article.updated_at) %> ago </td>
+        last updated: <%= time_ago_in_words(article.updated_at) %> ago </td> 	&nbsp;
 
-    
+        <% if logged_in? && current_user == article.user %>
+        
+            <td> <%= link_to "Edit", edit_article_path(article) %> </td> &nbsp;
+                    
+            <td> <%= link_to "Delete", article_path(article), method: :delete, data: {confirm: "Are you sure?"} %> </td>
+                
+        <% end %>
     
         </tr>
     <% end %>

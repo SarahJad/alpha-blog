@@ -1,15 +1,12 @@
 <h1 align="center"> Listing All categories </h1>
 
-<% if current_user.admin? %>
-<%= link_to 'Create new Category', new_category_path, class: "btn-primary btn-lg if "%>
-<% end %>
+
 
 <div align="center">
-
-
-    
-
     <%= will_paginate %>
+</div>
+
+<div align="center">
     <% @categories.each do |category| %>
         <ul class="listing">
             <div class="well col-md-4 col-md-offset-4">
@@ -25,3 +22,12 @@
     
 </div>
 
+
+<div align="center">
+
+<% if current_user.admin? %>
+<%= link_to 'Create new Category', new_category_path, class: "btn-primary btn-lg if "%>
+<% end %>
+
+    
+</div>
